@@ -1,0 +1,25 @@
+spring:
+  #h2:
+  #  console:
+  #    enabled: true
+  # H2 Repository Location
+  datasource:
+    url: jdbc:h2:tcp://localhost/~/test
+    driver-class-name: org.h2.Driver
+    username: sa
+    password:
+
+  # Spring Jpa ddl
+  jpa:
+    generate-ddl: true
+    hibernate:
+      ddl-auto: create
+
+#    # Query show
+    show-sql: true
+#
+    # Query pretty print
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.H2Dialect
+        format_sql: true
