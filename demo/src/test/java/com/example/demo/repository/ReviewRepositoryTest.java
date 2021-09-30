@@ -19,5 +19,12 @@ public class ReviewRepositoryTest {
         List<Review> reviewList = reviewRepository.findAll();
 
         System.out.println(reviewList);
+//        System.out.println("전체를 가져왔습니다.");
+
+//        System.out.println(reviewList.get(0).getComments());
+//        System.out.println("첫번째 리뷰의 코멘트를 가져왔습니다");
+
+//        System.out.println(reviewList.get(1).getComments());
+//        System.out.println("두번째 리뷰의 코멘트를 가져왔습니다");
     }
 }
