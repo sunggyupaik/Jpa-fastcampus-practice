@@ -65,7 +65,8 @@ class UserRepositoryTest {
     void embedTest() {
         User user = new User();
         user.setName("steve");
-        user.setAddress(new Address("서울시", "강남구", "강남대로 마왕빌딩", "06241"));
+        user.setHomeAddress(new Address("서울시", "강남구", "강남대로 마왕빌딩", "06241"));
+        user.setCompanyAddress(new Address("수원시", "장안구", "화성행궁", "281464"));
 
         userRepository.save(user);
 
