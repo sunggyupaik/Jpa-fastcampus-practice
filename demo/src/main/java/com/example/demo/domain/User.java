@@ -28,6 +28,9 @@ public class User extends BaseEntity{
     @Enumerated(EnumType.STRING)
     private Gender gender;
 
+    @Embedded
+    private Address address;
+
     @OneToMany(fetch = FetchType.EAGER)
     @JoinColumn(name = "user_id", insertable = false, updatable = false)
     @ToString.Exclude

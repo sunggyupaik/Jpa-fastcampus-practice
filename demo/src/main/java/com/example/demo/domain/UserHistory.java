@@ -21,6 +21,12 @@ public class UserHistory extends BaseEntity {
 
     private String email;
 
+    @Enumerated(EnumType.STRING)
+    private Gender gender;
+
+    @Embedded
+    private Address address;
+
     @ManyToOne
     @ToString.Exclude
     private User user;

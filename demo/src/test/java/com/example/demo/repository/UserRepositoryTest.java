@@ -1,5 +1,6 @@
 package com.example.demo.repository;
 
+import com.example.demo.domain.Address;
 import com.example.demo.domain.Gender;
 import com.example.demo.domain.User;
 import com.example.demo.domain.UserHistory;
@@ -58,5 +59,16 @@ class UserRepositoryTest {
         System.out.println(result);
 
         System.out.println("UserHistory.getUser() : " + userHistoryRepository.findAll().get(0).getUser());
+    }
+
+    @Test
+    void embedTest() {
+        User user = new User();
+        user.setName("steve");
+        user.setAddress(new Address("서울시", "강남구", "강남대로 마왕빌딩", "06241"));
+
+        userRepository.save(user);
+
+        userRepository.findAll().forEach(System.out::println);
     }
 }
