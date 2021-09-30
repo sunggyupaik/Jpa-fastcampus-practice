@@ -1,6 +1,7 @@
 package com.example.demo.domain;
 
-import com.example.demo.repository.BookRepository;
+import com.example.demo.domain.converter.BookStatusConverter;
+import com.example.demo.dto.BookStatus;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
@@ -40,4 +41,7 @@ public class Book extends BaseEntity {
     @ManyToOne
     @ToString.Exclude
     private Publisher publisher;
+
+    @Convert(converter = BookStatusConverter.class)
+    private BookStatus status; //판매상태
 }

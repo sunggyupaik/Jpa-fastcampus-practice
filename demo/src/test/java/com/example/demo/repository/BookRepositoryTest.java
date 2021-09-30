@@ -1,6 +1,7 @@
 package com.example.demo.repository;
 
 import com.example.demo.domain.*;
+import com.example.demo.dto.BookStatus;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -86,5 +87,14 @@ public class BookRepositoryTest {
         publisher.setName("fast");
 
         return publisherRepository.save(publisher);
+    }
+
+    @Test
+    public void convertTest() {
+        Book book = new Book();
+        book.setStatus(new BookStatus(100));
+        bookRepository.save(book);
+
+        bookRepository.findAll().forEach(System.out::println);
     }
 }
