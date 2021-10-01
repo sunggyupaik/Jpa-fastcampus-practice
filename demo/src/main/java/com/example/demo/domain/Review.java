@@ -35,5 +35,6 @@ public class Review extends BaseEntity {
 
     @OneToMany(fetch = FetchType.LAZY)
     @JoinColumn(name="review_id")
+    @ToString.Exclude
     private List<Comment> comments = new ArrayList<>();
 }

@@ -16,9 +16,18 @@ public class ReviewRepositoryTest {
     @Test
     @Transactional
     void reviewTest() {
-        List<Review> reviewList = reviewRepository.findAll();
+        List<Review> reviewList = reviewRepository.findAllByFetchJoin();
 
-        System.out.println(reviewList);
+        reviewList.forEach(System.out::println);
+
+//        List<Review> reviewList = reviewRepository.findAllByEntityGraph();
+
+//        reviewList.forEach(System.out::println);
+
+//        List<Review> reviewList = reviewRepository.findAll();
+
+//        reviewList.forEach(System.out::println);
+
 //        System.out.println("전체를 가져왔습니다.");
 
 //        System.out.println(reviewList.get(0).getComments());
