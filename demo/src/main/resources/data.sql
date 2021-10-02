@@ -1,0 +1,1 @@
+Insert into comment(id, created_at) values (1, now());

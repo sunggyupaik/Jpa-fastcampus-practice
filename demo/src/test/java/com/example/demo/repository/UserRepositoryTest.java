@@ -8,7 +8,11 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
+import javax.persistence.EntityManager;
 import java.util.List;
+
+import static org.assertj.core.api.Assertions.assertThat;
+import static org.junit.jupiter.api.Assertions.assertAll;
 
 @SpringBootTest
 class UserRepositoryTest {
@@ -17,6 +21,9 @@ class UserRepositoryTest {
 
     @Autowired
     private UserHistoryRepository userHistoryRepository;
+
+    @Autowired
+    EntityManager entityManager;
 
     @Test
     public void saveUser() {
@@ -68,8 +75,30 @@ class UserRepositoryTest {
         user.setHomeAddress(new Address("서울시", "강남구", "강남대로 마왕빌딩", "06241"));
         user.setCompanyAddress(new Address("수원시", "장안구", "화성행궁", "281464"));
 
-        userRepository.save(user);
+        //userRepository.save(user);
+
+        User user1 = new User();
+        user1.setName("bert");
+        user1.setHomeAddress(null);
+        user1.setCompanyAddress(null);
+
+        userRepository.save(user1);
+
+        User user2 = new User();
+        user2.setName("john");
+        user2.setHomeAddress(new Address());
+        user2.setCompanyAddress(new Address());
+
+        userRepository.save(user2);
+
+//        entityManager.clear();
 
         userRepository.findAll().forEach(System.out::println);
+        userHistoryRepository.findAll().forEach(System.out::println);
+
+        assertAll(
+                () -> assertThat(userRepository.findById(1L).get().getHomeAddress()).isNull(),
+                () -> assertThat(userRepository.findById(2L).get().getHomeAddress()).isInstanceOf(Address.class)
+        );
     }
 }
