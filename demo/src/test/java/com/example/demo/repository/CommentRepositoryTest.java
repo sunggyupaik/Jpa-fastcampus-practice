@@ -20,14 +20,23 @@ class CommentRepositoryTest {
     @Test
     @Transactional
     void commentTest() {
+//        Comment comment = commentRepository.findById(1L).get();
+//        comment.setCommentedAt(LocalDateTime.now());
+//
+//        commentRepository.saveAndFlush(comment);
+//
+////        entityManager.clear();
+//
+//        commentRepository.findAll().forEach(System.out::println);
+
         Comment comment = commentRepository.findById(1L).get();
         comment.setCommentedAt(LocalDateTime.now());
 
-        commentRepository.saveAndFlush(comment);
+        commentRepository.save(comment);
 
 //        entityManager.clear();
 
-        commentRepository.findAll().forEach(System.out::println);
+        System.out.println(commentRepository.findById(1L).get());
     }
 
     @Test

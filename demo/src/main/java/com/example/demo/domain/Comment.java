@@ -3,6 +3,7 @@ package com.example.demo.domain;
 import lombok.*;
 import org.hibernate.Hibernate;
 import org.hibernate.annotations.DynamicInsert;
+import org.hibernate.annotations.DynamicUpdate;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
@@ -13,6 +14,7 @@ import java.util.Objects;
 @Getter
 @Setter
 @DynamicInsert
+@DynamicUpdate
 @ToString(callSuper = true)
 public class Comment extends BaseEntity{
     @Id
